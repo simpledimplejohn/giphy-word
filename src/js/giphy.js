@@ -1,8 +1,8 @@
 export default class GifSearch {
-  static async getGif() {
+  static async getGif(searchTerm) {
     try {
-      let choice = "rainbow"
-      const response = await fetch(`http://api.giphy.com/v1/gifs/search?=&api_key=${process.env.API_KEY}&q=${choice}`);
+      
+      const response = await fetch(`http://api.giphy.com/v1/gifs/search?=&api_key=${process.env.API_KEY}&q=${searchTerm}`);
       if (!response.ok) {
         throw Error(response.statusTextError);
       }

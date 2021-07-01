@@ -8,7 +8,7 @@ import GifSearch from './js/giphy'
 function getElements(response) {
 
   if(response) {
-    $('#showGif').src(`${response}`);
+    $('#showGif').text(`${response}`);
     console.log("getElements", response);  
   } else {
     $('.showErrors').text(`There was an error: ${response}`);
@@ -17,7 +17,7 @@ function getElements(response) {
 
 async function makeApiCall(choice) {
   try{
-    console.log("choice",choice)
+    console.log("choice in makeApiCall",choice)
     const response = await GifSearch.getGif(choice);
     console.log("makeApiCall",response.data[0].images.original.url);
     getElements(response.data[0].images.original.url);
@@ -33,10 +33,11 @@ $(document).ready(function() {
   $('#gif-form').submit(function(event) {
     // const inputtedChoice = $("gif-parameter option: selected").val();
     event.preventDefault();
-    let choice = $("#gif").val("");
-    console.log(choice);
-    makeApiCall(choice)
-    $(".showGif").html(choice);
+    let choice = $("#gif").val();
+    console.log("choice in gif-form",choice);
+    //makeApiCall(choice)
+    console.log("api call", makeApiCall(choice))
+    $(".showGif").html(makeApiCall(choice));
     $(".showErrors").text(`ERROR`);
   });
 });
