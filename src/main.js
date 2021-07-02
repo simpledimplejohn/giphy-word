@@ -8,7 +8,7 @@ import GifSearch from './js/giphy'
 function getElements(response) {
 
   if(response) {
-    $('#showGif').text(`${response}`);
+    $('#showGif').html(`<img src=${response}>`);
     console.log("getElements", response);  
   } else {
     $('.showErrors').text(`There was an error: ${response}`);
@@ -38,7 +38,7 @@ $(document).ready(function() {
     //makeApiCall(choice)
     console.log("api call", makeApiCall(choice))
     $(".showGif").html(makeApiCall(choice));
-    $(".showErrors").text(`ERROR`);
+    //$(".showErrors").text(`ERROR`);
   });
 });
 
