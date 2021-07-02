@@ -8,6 +8,7 @@ import GifSearch from './js/giphy'
 function getElements(response) {
 
   if(response) {
+    //  ALISTER FIX!
     $('#showGif').html(`<img src=${response}>`);
     console.log("getElements", response);  
   } else {
